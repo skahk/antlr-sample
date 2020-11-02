@@ -1,4 +1,11 @@
 grammar Test;
-main: 'Hello ' name '!';
-name: ANY+;
-ANY: .;
+
+jsonObject: '{' STR ':' value '}';
+
+STR: (('a'..'z') | ('A'..'Z'))+;
+
+value: STR
+    |
+    jsonObject;
+
+WS: [ \t\r\n]+ -> skip;
